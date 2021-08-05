@@ -10,8 +10,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
+import {LayoutModule} from '@angular/cdk/layout';
 const material_ui=[
    MatIconModule,
+   LayoutModule,
    MatFormFieldModule,
    MatTableModule,
    MatButtonModule,

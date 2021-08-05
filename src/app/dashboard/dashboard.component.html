@@ -1,5 +1,5 @@
 
-<mat-grid-list cols="2" rowHeight="2: 1">
+<mat-grid-list [cols]="currentScreenSize" rowHeight="2: 1">
         <mat-grid-tile *ngFor="let item of classData">
              <mat-card>
                 <ngx-gauge  style="color:black; text-align: right !important"  

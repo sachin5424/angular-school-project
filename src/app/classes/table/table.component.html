@@ -1,0 +1,47 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element let i = index;"> {{i+1}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="class">
+      <th mat-header-cell *matHeaderCellDef> Class </th>
+      <td mat-cell *matCellDef="let element"> {{element.class}} </td>
+    </ng-container>
+
+    <!-- Roll No Column -->
+    <ng-container matColumnDef="students">
+      <th mat-header-cell *matHeaderCellDef> Total Students </th>
+      <td mat-cell *matCellDef="let element"> {{element.total_students}} </td>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="openDialog(element.id)">
+        <mat-icon>visibility</mat-icon>
+      </button>
+    </td>
+    </ng-container>
+
+       <!-- Delete Column -->
+       <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>  Delete </th>
+        <td mat-cell *matCellDef="let element">
+
+            <button (click)="openDialogDelete(element)" mat-icon-button >
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

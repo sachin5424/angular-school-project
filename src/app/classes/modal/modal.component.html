@@ -1,0 +1,46 @@
+
+<form [formGroup]="studentForm">
+    <h1>{{data.class}} class
+       <span>
+           <!-- 'mat-button','mat-raised-button', 'mat-flat-button','mat-stroked-button','mat-icon-button','mat-fab','mat-mini-fab' -->
+           <button  class="mat-blue" [matMenuTriggerFor]="menu" mat-icon-button >
+            <mat-icon>more_vert</mat-icon>
+           </button>
+       </span>
+    </h1>
+
+    <mat-form-field  appearance="standard">
+    <mat-label>Class</mat-label>
+    <input [disabled]='disabled' matInput formControlName="name" placeholder="Placeholder">
+    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    <!-- <mat-hint>Hint Here</mat-hint> -->
+    <!-- <mat-error *ngIf="error">Show Your Error Here</mat-error> -->
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="standard">
+    <mat-label>Total Students</mat-label>
+    <input  matInput  formControlName="roll_no" placeholder="Placeholder">
+    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    <!-- <mat-hint>Hint Here</mat-hint> -->
+    <!-- <mat-error *ngIf="error">Show Your Error Here</mat-error> -->
+    </mat-form-field>
+    <br>
+    <button *ngIf="disabled" mat-raised-button color="primary">Update</button>
+</form>
+
+<button (click)="closeDialog()" style="float: right;"  mat-stroked-button color="warn">
+    cancel
+</button>
+
+<mat-menu #menu="matMenu">
+    <button (click)="updatestudent()" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+
+
+  </mat-menu>

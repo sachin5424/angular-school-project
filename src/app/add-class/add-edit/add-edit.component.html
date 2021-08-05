@@ -1,0 +1,25 @@
+
+
+<mat-grid-list  cols="1" rowHeight="3:1">
+
+<mat-grid-tile>
+
+<mat-card class="card">
+    <form [formGroup]="studentForm" (ngSubmit)="fnSumbit()" >
+        <h2 *ngIf="error">Create Item</h2>
+        <h1>Add Class</h1>
+        <mat-form-field appearance="standard">
+        <mat-label>Class</mat-label>
+        <input matInput formControlName="class" placeholder="Placeholder">
+        <mat-error >  This field is requred</mat-error>
+        </mat-form-field>
+      <mat-divider ></mat-divider>
+    
+      <button type="submit" mat-raised-button color="primary">Save</button>
+    </form>
+</mat-card>
+</mat-grid-tile>
+
+
+</mat-grid-list>
+

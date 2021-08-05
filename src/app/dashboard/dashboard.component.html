@@ -1,0 +1,14 @@
+
+<mat-grid-list cols="2" rowHeight="2: 1">
+        <mat-grid-tile *ngFor="let item of classData">
+             <mat-card>
+                <ngx-gauge  style="color:black; text-align: right !important"  
+                [value]="item.total_students" 
+                [label]="item.class"  
+               
+                [append]="'students'">
+            </ngx-gauge>
+             </mat-card>
+        </mat-grid-tile>
+
+</mat-grid-list>

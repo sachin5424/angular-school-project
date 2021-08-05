@@ -1,0 +1,18 @@
+.tableStyle{
+    width: 100% !important; margin-top: -150px !important; padding: 20px;
+}
+table {
+    width: 100%;
+  }
+
+  mat-form-field{
+      width: 100%;
+  }
+
+  .formStyle{
+      padding: 10px;
+  }
+
+  .massage{
+    padding: 10px ; background-color: green ; font-weight: bolder; color: white; text-align: center;
+  }

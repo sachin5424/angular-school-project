@@ -1,0 +1,16 @@
+mat-form-field{
+    width: 100%;
+}
+mat-divider{
+    margin-top: 20px;
+}
+button{
+    margin-top: 30px;
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.tableStyle{
+    width: 100% !important; margin-top: -150px !important; padding: 20px;
+}

@@ -1,5 +1,16 @@
+<!-- 'mat-button','mat-raised-button', 'mat-flat-button','mat-stroked-button','mat-icon-button','mat-fab','mat-mini-fab' -->
+<div  *ngIf="!spinner" style="width: 100%; text-align: center; margin-top: 2%;">
+   <button  (click)="update()" style="width: 80%;" mat-raised-button color="primary">
+   Refresh
+  </button>
+ </div>
+ <div  *ngIf="Refresh" [style.width]="Refresh ? '100%':'0%'" style=" text-align: center; margin-top: 2%; color: green;">
+  <h1  disabled  mat-raised-button color="primary">
+    uploaded successfully
+  </h1>
+</div>
 <table *ngIf="!spinner" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+ 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 

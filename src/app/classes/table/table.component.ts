@@ -12,6 +12,7 @@ import {StudentTableComponent} from '../student-table/student-table.component';
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'class', 'students', 'edit','delete'];
   dataSource:any;
+  Refresh:boolean = false
   spinner:boolean =true;
   constructor(public dialog: MatDialog,private _studentData:DataService) {}
   ngOnInit(): void {
@@ -60,6 +61,13 @@ export class TableComponent implements OnInit {
       console.log(res)
       this.ngOnInit();
     })
+  }
+  update(){
+   this.Refresh = !this.Refresh
+   this.ngOnInit()
+   setTimeout(()=>{
+     this.Refresh = false
+   },2000)
   }
 
 

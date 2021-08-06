@@ -11,8 +11,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {LayoutModule} from '@angular/cdk/layout';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 const material_ui=[
    MatIconModule,
+   MatProgressSpinnerModule,
    LayoutModule,
    MatFormFieldModule,
    MatTableModule,

@@ -12,6 +12,7 @@ import {StudentTableComponent} from '../student-table/student-table.component';
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'class', 'students', 'edit','delete'];
   dataSource:any;
+  spinner:boolean =true;
   constructor(public dialog: MatDialog,private _studentData:DataService) {}
   ngOnInit(): void {
     this.fnGet();
@@ -28,7 +29,7 @@ export class TableComponent implements OnInit {
     const dialogRef = this.dialog.open(StudentTableComponent,{
       data:data,
       width:"100vh",
-      height:"90vh"
+      height:"63vh"
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -50,6 +51,7 @@ export class TableComponent implements OnInit {
   fnGet(){
     this._studentData.fnGetClass().subscribe((res:any)=>{
        this.dataSource=res.data;
+       this.spinner= false
        console.log(res)
     })
   }

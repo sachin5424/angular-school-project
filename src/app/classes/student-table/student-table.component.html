@@ -1,10 +1,10 @@
 
-
 <!-- 'mat-button','mat-raised-button', 'mat-flat-button','mat-stroked-button','mat-icon-button','mat-fab','mat-mini-fab' -->
-<button (click)="toggle()" [color]="showTable ? 'primary' : 'warn'"  style="width: 100%;" mat-raised-button color="warn">{{showTable?  'Add Student':'Show Table'}}</button>
+<button  (click)="toggle()" [color]="showTable ? 'primary' : 'warn'"  style="width: 100%;" mat-raised-button color="warn">{{showTable?  'Add Student':'Show Table'}}</button>
 <br>
 
-<table *ngIf="showTable" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<ng-container  *ngIf="!spinner">
+  <table *ngIf="showTable" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -45,15 +45,21 @@
     </tr>
     
   </table>
-  
   <br>
   <h1 *ngIf="showTable">Total Students  : {{totalStudent}}</h1>
+  
+</ng-container>
+
+
+
  
 
 <ng-container *ngIf="showForm" >
   <div class="formStyle">
     <form [formGroup]="addStudent"   (ngSubmit)="fnSubmit()">
-      <p class="massage" *ngIf="formMessage">Create Student</p>
+      <p class="massage"  [style.color]="error ? 'red' :null" >
+         {{error? 'Name and Rollno unique  ':null}}
+      </p>
       <mat-form-field  appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name" placeholder="Placeholder">
@@ -78,9 +84,21 @@
      
       <mat-error >Only Numeric value</mat-error>
       </mat-form-field>
-      <button mat-raised-button  color="primary">Save</button>
+      
+      <button mat-raised-button  style="color: black;">
+        {{ formMessage ? null:'Save'}}
+        <mat-spinner *ngIf="formMessage"  diameter="25" style="align-items: center;"></mat-spinner>
+      </button>
+      
+     
   </form>
   </div>
 </ng-container>
+
+
+
+<div style="width: 60%; margin-left: 40%;">
+  <mat-spinner *ngIf="spinner" mode="indeterminate"></mat-spinner>
+ </div>
 
 

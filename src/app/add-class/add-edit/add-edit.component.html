@@ -6,7 +6,12 @@
 
 <mat-card class="card">
     <form [formGroup]="studentForm" (ngSubmit)="fnSumbit()" >
-        <h2 *ngIf="error">Create Item</h2>
+        <h2 [style.background-color]="formMeassage? 'green':null">
+          
+            {{formMeassage ? 'Create Item':null}}
+
+        </h2>
+        
         <h1>Add Class</h1>
         <mat-form-field appearance="standard">
         <mat-label>Class</mat-label>
@@ -15,7 +20,11 @@
         </mat-form-field>
       <mat-divider ></mat-divider>
     
-      <button type="submit" mat-raised-button color="primary">Save</button>
+      <button [disabled]="studentForm.invalid" type="submit" mat-raised-button >
+        {{spinner ? null:'Save'}}
+        <mat-spinner  *ngIf="spinner" diameter="25" style="align-items: center;"></mat-spinner>
+
+      </button>
     </form>
 </mat-card>
 </mat-grid-tile>

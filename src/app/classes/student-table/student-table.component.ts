@@ -11,10 +11,12 @@ import { DataService } from 'src/app/service/data.service';
 export class StudentTableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'rollno','delete'];
   dataSource:any;
+  error:boolean | undefined
   totalStudent:any
   showTable:boolean = true
   showForm:boolean = false
   formMessage:boolean = false
+  spinner:boolean = true
   classId:any
   addStudent = new FormGroup({
     name:new FormControl(null,[Validators.required,Validators.minLength(3)]),
@@ -26,6 +28,7 @@ export class StudentTableComponent implements OnInit {
     this.fnGetClassId()
     this._studentsApi.fnStudentsFindClassId(this.data).subscribe((res:any)=>{
     this.dataSource=res.data
+    this.spinner = false
     this.totalStudent = res.data.length
   })
   }
@@ -35,13 +38,26 @@ export class StudentTableComponent implements OnInit {
   }
   fnSubmit(){
     console.log(this.addStudent.value)
+    this.formMessage= true
     if(this.addStudent.valid){
       this._studentsApi.fnStudentsCreate(this.addStudent.value).subscribe((res)=>{
         console.log(res)
         this.addStudent.reset()
-        this.formMessage = true
+        this.showTable = true
+        this.showForm = false
+        
       
+      },(err:any)=>{
+        if(err.status === 500){
+          // this.formMessage = true
+          this.error  = true
+          this.formMessage= false
+        }
       })
+    
+    }
+    else{
+      this.formMessage  = false
     }
   
   }

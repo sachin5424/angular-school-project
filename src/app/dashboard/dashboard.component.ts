@@ -55,7 +55,6 @@ export class DashboardComponent implements OnInit {
   fnGetClassList(){
     this._classApi.fnGetClass().subscribe((res:any)=>{
       this.classData = res.data
-      console.log(res.data)
     })
   }
 
